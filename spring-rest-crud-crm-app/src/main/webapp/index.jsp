@@ -1,7 +1,7 @@
 <html>
 <body>
 
-    <h3>Spring REST CRUD CRM App</h3><hr>
+    <h3>SPRING REST CRUD CRM APPLICATION</h3><hr>
 
 </body>
 </html>
