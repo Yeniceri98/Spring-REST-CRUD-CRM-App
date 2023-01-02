@@ -6,8 +6,7 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Class[0];
 	}
 
 	@Override
@@ -19,8 +18,9 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
-
 }
+
+// NOT: Spring Security kısmında bu ve DemoAppConfig classlarını görmüştük
 
 
 

@@ -60,13 +60,15 @@
 		</dependency>
 
 		<!-- C3PO -->
+		<!-- Used for managing the database connections for us -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>${c3po.version}</version>
 		</dependency>
 
-		<!-- Servlet+JSP+JSTL -->
+		<!-- Servlet + JSP + JSTL -->
+		<!-- Spring MVC uses Servlet API in the background -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -79,14 +81,7 @@
 			<version>2.3.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-
-		<!-- to compensate for java 9 not including jaxb -->
+		<!-- To compensate for java 9 not including jaxb -->
 		<dependency>
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>
@@ -96,20 +91,14 @@
 	</dependencies>
 
 	<build>
-
 		<finalName>spring-rest-crud-crm-app</finalName>
-
 		<plugins>
-
-			<!-- Builds a Web Application Archive (WAR) file from the project output 
-				and its dependencies. -->
+			<!-- Builds a Web Application Archive (WAR) file from the project output and its dependencies. -->
 			<plugin>
-				<!-- Add Maven coordinates (GAV) for: maven-war-plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.0</version>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
