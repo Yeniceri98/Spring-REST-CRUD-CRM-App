@@ -27,7 +27,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// Create a query
-		Query<Customer> theQuery = currentSession.createQuery("from Customer ORDER BY lastName", Customer.class);
+		Query<Customer> theQuery = currentSession.createQuery("FROM Customer ORDER BY id", Customer.class);
 		
 		// Execute query and get result list
 		List<Customer> customers = theQuery.getResultList();
@@ -93,7 +93,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		} else {
 			
 			// theSearchName is empty ... so just get all customers
-            theQuery =currentSession.createQuery("from Customer", Customer.class); 
+            theQuery =currentSession.createQuery("FROM Customer", Customer.class);
 		}
 		
 		// Execute query and get result list
