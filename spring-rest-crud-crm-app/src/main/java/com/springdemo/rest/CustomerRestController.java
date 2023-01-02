@@ -69,6 +69,7 @@ public class CustomerRestController {
     }
 
     // PUT OPERATION
+    // NOT: POST operasyonunda Postman'de body'yi oluşturup istek atarken id'yi vermemiştik kendisi otomatik oluşturmuştu. PUT için güncellemek istediğimiz verinin id'sini de vermeliyiz
 
     @PutMapping("/customers")
     public Customer updateCustomer(@RequestBody Customer customer) {
