@@ -2,8 +2,6 @@ package com.springdemo.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -61,45 +59,15 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void deleteCustomer(int theId) {
-		
-		// Get current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-		
-		// Delete object with the id
-		
-		// 1st Way of Deleting: With Session Directly
-		currentSession.delete(theId);
-		
-		// 2nd Way of Deleting: With Query
-		// Query theQuery = currentSession.createQuery("DELETE FROM Customer WHERE id=:customerId");
-		// theQuery.setParameter("customerId", theId);
-		// theQuery.executeUpdate();
-	}
 
-	@Override
-	public List<Customer> searchCustomer(String theSearchName) {
-		
-		// Get current hibernate session
+		// Get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		Query theQuery = null;
-		
-		if (theSearchName != null && theSearchName.trim().length() > 0) {
-			
-			// Search for firstName or lastName ... case insensitive
-            theQuery =currentSession.createQuery("FROM Customer WHERE lower(firstName) like :theName or lower(lastName) like :theName", Customer.class);
-            theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
-            
-		} else {
-			
-			// theSearchName is empty ... so just get all customers
-            theQuery =currentSession.createQuery("FROM Customer", Customer.class);
-		}
-		
-		// Execute query and get result list
-		List<Customer> customers = theQuery.getResultList();
-		
-		return customers;
+
+		// Delete object with primary key
+		Query theQuery = currentSession.createQuery("DELETE FROM Customer WHERE id=:customerId");
+		theQuery.setParameter("customerId", theId);
+
+		theQuery.executeUpdate();
 	}
 }
 

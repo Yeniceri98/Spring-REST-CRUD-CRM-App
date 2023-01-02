@@ -17,13 +17,11 @@ public class CustomerRestController {
 
     // GET OPERATION
 
-    // GET all customers
     @GetMapping("/customers")
     public List<Customer> getCustomers() {
         return customerService.getCustomers();      // REST Controller ---> Service ---> DAO ---> Hibernate
     }
 
-    // GET single customer
     @GetMapping("/customers/{customerId}")
     public Customer getSingleCustomer(@PathVariable int customerId) {
 
@@ -77,6 +75,22 @@ public class CustomerRestController {
         customerService.saveCustomer(customer);
 
         return customer;
+    }
+
+    // DELETE OPERATION
+
+    @DeleteMapping("/customers/{customerId}")
+    public String deleteCustomer(@PathVariable int customerId) {
+
+        Customer tempCustomer = customerService.getCustomerById(customerId);
+
+        if (tempCustomer == null) {
+            throw new CustomerNotFoundException("Customer with the id of " + customerId + " is not found!");
+        }
+
+        customerService.deleteCustomer(customerId);
+
+        return "Deleted Customer\nID: " + customerId + "\nFirst Name: " + tempCustomer.getFirstName() + "\nLast Name: " + tempCustomer.getLastName();
     }
 }
 
