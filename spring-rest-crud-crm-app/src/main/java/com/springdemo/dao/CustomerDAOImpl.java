@@ -119,11 +119,5 @@ public class CustomerDAOImpl implements CustomerDAO {
 	Spring will automatically register the DAO implementation thanks to component-scanning
 	Spring also provides translation of any JDBC related exceptions
 
-	Controller ---> Service ---> DAO (Project Overview.PNG de görülebilir)
-*/
-/*
-	saveOrUpdate(...)
-	if primary key or id is empty;
-	then INSERT new customer
-	else UPDATE existing customer
+	REST Controller ---> Service ---> DAO
 */
